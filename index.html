@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Organize your campus tasks, events, and deadlines with Campus Life Planner.">
+  <title>Campus Life Planner</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script type="module" src="scripts/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="logo" href="#dashboard">Campus Life Planner</a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#activity-form">Add Activity</a></li>
+          <li><a href="#settings">Settings</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container">
+    <section id="dashboard" aria-labelledby="dashboard-title">
+      <h1 id="dashboard-title">Your Campus Dashboard</h1>
+      <p>Plan your day, manage your tasks, and stay organized.</p>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <h2>Total Activities</h2>
+          <p id="total-activities">0</p>
+        </article>
+
+        <article class="stat-card">
+          <h2>Completed Activities</h2>
+          <p id="completed-activities">0</p>
+        </article>
+
+        <article class="stat-card">
+          <h2>Upcoming Activities</h2>
+          <p id="upcoming-activities">0</p>
+        </article>
+
+        <article class="stat-card">
+          <h2>Total Duration</h2>
+          <p id="total-duration">0 minutes</p>
+        </article>
+      </div>
+
+      <p id="duration-status" role="status" aria-live="polite"></p>
+      <p id="error-message" role="alert"></p>
+    </section>
+
+    <section id="activities" aria-labelledby="activities-title">
+      <h2 id="activities-title">My Activities</h2>
+
+      <div class="toolbar">
+        <div class="field">
+          <label for="search-input">Search with a regular expression</label>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Example: ^Study"
+            aria-describedby="search-help"
+          >
+          <p id="search-help">Enter a regex pattern to search titles and tags.</p>
+        </div>
+
+        <div class="field">
+          <label for="sort-select">Sort activities</label>
+          <select id="sort-select">
+            <option value="date-asc">Date: earliest first</option>
+            <option value="date-desc">Date: latest first</option>
+            <option value="title-asc">Title: A to Z</option>
+            <option value="title-desc">Title: Z to A</option>
+            <option value="duration-asc">Duration: shortest first</option>
+            <option value="duration-desc">Duration: longest first</option>
+          </select>
+        </div>
+
+        <label class="checkbox-field">
+          <input id="case-insensitive" type="checkbox" checked>
+          Ignore letter case
+        </label>
+      </div>
+
+      <div id="activity-list" class="activity-list" aria-live="polite">
+        <p>No activities yet. Add your first activity below!</p>
+      </div>
+    </section>
+
+    <section id="activity-form" aria-labelledby="form-title">
+      <h2 id="form-title">Add a New Activity</h2>
+
+      <form id="activity-entry-form">
+        <div class="field">
+          <label for="activity-title">Activity title</label>
+          <input id="activity-title" name="title" type="text" required maxlength="100">
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="due-date">Due date</label>
+            <input id="due-date" name="dueDate" type="date" required>
+          </div>
+
+          <div class="field">
+            <label for="duration">Duration (minutes)</label>
+            <input id="duration" name="duration" type="number" min="0" step="1" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="activity-tag">Tag</label>
+          <input
+            id="activity-tag"
+            name="tag"
+            type="text"
+            placeholder="Study, Meeting, Personal"
+            required
+          >
+        </div>
+
+        <button type="submit">Save Activity</button>
+        <button id="cancel-edit" type="button" hidden>Cancel Edit</button>
+      </form>
+
+      <p id="form-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="settings" aria-labelledby="settings-title">
+      <h2 id="settings-title">Settings</h2>
+
+      <form id="settings-form">
+        <div class="field">
+          <label for="duration-target">Weekly duration target (minutes)</label>
+          <input id="duration-target" type="number" min="0" step="1" value="600" required>
+        </div>
+        <button type="submit">Save Settings</button>
+      </form>
+
+      <div class="button-group">
+        <button id="export-json" type="button">Export JSON</button>
+
+        <label class="button-label" for="import-json">Import JSON</label>
+        <input id="import-json" type="file" accept=".json,application/json">
+      </div>
+
+      <p id="settings-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About This Project</h2>
+      <p>
+        Campus Life Planner helps students organize assignments, campus events,
+        meetings, and personal activities in one place.
+      </p>
+      <p>
+        GitHub:
+        <a href="https://github.com/mndayiragi-hub/Campus_life_planner">
+          View the project repository
+        </a>
+      </p>
+      <p>Email: <a href="mndayiragi@alustudent.com">mndayiragi@alustudent.com</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Campus Life Planner. Built with HTML, CSS, and JavaScript.</p>
+    </div>
+  </footer>
+</body>
+</html>
