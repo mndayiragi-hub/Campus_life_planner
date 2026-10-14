@@ -1,10 +1,12 @@
 
-const TITLE_PATTERN = /^\S(?:.*\S)?$/;
+const TITLE_PATTERN = /^(?=\S).*\S$/;
 const DURATION_PATTERN = /^(0|[1-9]\d*)$/;
 const DATE_PATTERN = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+
+const TAG_ALLOWED_CHARACTERS_PATTERN = /^[A-Za-z -]+$/;
+
 const TAG_PATTERN = /^[A-Za-z]+(?:[ -][A-Za-z]+)*$/;
 
-// Advanced regex: detects repeated consecutive words.
 const DUPLICATE_WORD_PATTERN = /\b(\w+)\s+\1\b/i;
 
 export function validateTitle(title) {
@@ -51,8 +53,13 @@ export function validateDate(date) {
 }
 
 export function validateTag(tag) {
-  if (typeof tag !== "string" || !TAG_PATTERN.test(tag)) {
-    return "Tag must contain letters separated by single spaces or hyphens.";
+  if (
+    typeof tag !== "string" ||
+    !TAG_ALLOWED_CHARACTERS_PATTERN.test(tag) ||
+    !TAG_BOUNDARY_PATTERN.test(tag) ||
+    !TAG_PATTERN.test(tag)
+  ) {
+    return "Tag must start and end with a letter, using single spaces or hyphens between words.";
   }
 
   return "";
