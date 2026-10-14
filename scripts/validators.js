@@ -4,7 +4,7 @@ const DURATION_PATTERN = /^(0|[1-9]\d*)$/;
 const DATE_PATTERN = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
 
 const TAG_ALLOWED_CHARACTERS_PATTERN = /^[A-Za-z -]+$/;
-
+const TAG_BOUNDARY_PATTERN = /^(?=[A-Za-z])[\s\S]*(?<=[A-Za-z])$/;
 const TAG_PATTERN = /^[A-Za-z]+(?:[ -][A-Za-z]+)*$/;
 
 const DUPLICATE_WORD_PATTERN = /\b(\w+)\s+\1\b/i;
