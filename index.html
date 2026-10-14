@@ -54,7 +54,19 @@
           <p id="total-duration">0 minutes</p>
         </article>
       </div>
+      <article class="stat-card">
+        <h2>Weekly Duration Goal</h2>
+        <p id="weekly-progress-text">0 of 600 minutes planned this week.</p>
 
+        <progress
+          id="weekly-progress"
+          value="0"
+          max="600"
+          aria-label="Weekly duration goal progress"
+        ></progress>
+
+        <p id="weekly-progress-hours">0.0 of 10.0 hours</p>
+      </article>
       <p id="duration-status" role="status" aria-live="polite"></p>
       <p id="error-message" role="alert"></p>
     </section>

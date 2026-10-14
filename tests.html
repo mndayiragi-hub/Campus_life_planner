@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Life Planner - Validation Tests</title>
+  <style>
+    body {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .pass {
+      color: #176b36;
+    }
+
+    .fail {
+      color: #b42318;
+    }
+
+    :focus-visible {
+      outline: 3px solid #c06b00;
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Validation Tests</h1>
+    <p id="summary" role="status" aria-live="polite">
+      Running tests...
+    </p>
+    <ul id="results"></ul>
+  </main>
+
+  <script type="module">
+    import {
+      validateTitle,
+      validateDuration,
+      validateDate,
+      validateTag
+    } from "./scripts/validators.js";
+
+    const tests = [
+      ["Accept a valid title", () => validateTitle("Study biology") === ""],
+      ["Reject leading spaces", () => validateTitle(" Study") !== ""],
+      ["Reject trailing spaces", () => validateTitle("Study ") !== ""],
+      ["Reject duplicate words", () => validateTitle("Study study notes") !== ""],
+      ["Reject an empty title", () => validateTitle("") !== ""],
+      ["Accept duration 120", () => validateDuration("120") === ""],
+      ["Accept duration zero", () => validateDuration("0") === ""],
+      ["Reject negative duration", () => validateDuration("-5") !== ""],
+      ["Reject decimal duration", () => validateDuration("2.5") !== ""],
+      ["Reject letters as duration", () => validateDuration("abc") !== ""],
+      ["Accept a valid date", () => validateDate("2026-10-15") === ""],
+      ["Reject invalid month", () => validateDate("2026-13-10") !== ""],
+      ["Reject an impossible date", () => validateDate("2026-02-30") !== ""],
+      ["Accept a leap day", () => validateDate("2024-02-29") === ""],
+      ["Reject an invalid leap day", () => validateDate("2025-02-29") !== ""],
+      ["Accept a valid tag", () => validateTag("Group Study") === ""],
+      ["Accept a hyphenated tag", () => validateTag("Campus-Life") === ""],
+      ["Reject numbers in tags", () => validateTag("Study123") !== ""],
+      ["Reject repeated hyphens", () => validateTag("Campus--Life") !== ""]
+    ];
+
+    const results = document.getElementById("results");
+    let passed = 0;
+
+    for (const [name, runTest] of tests) {
+      const item = document.createElement("li");
+
+      try {
+        if (runTest()) {
+          passed++;
+          item.textContent = `PASS: ${name}`;
+          item.className = "pass";
+        } else {
+          item.textContent = `FAIL: ${name}`;
+          item.className = "fail";
+        }
+      } catch (error) {
+        item.textContent = `ERROR: ${name} — ${error.message}`;
+        item.className = "fail";
+      }
+
+      results.appendChild(item);
+    }
+
+    document.getElementById("summary").textContent =
+      `${passed} of ${tests.length} tests passed.`;
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+
+{
+  "version": 1,
+  "exportedAt": "2026-10-14T00:00:00.000Z",
+  "activities": [
+    {
+      "id": 1,
+      "title": "Complete Python assignment",
+      "dueDate": "2026-10-14",
+      "duration": 120,
+      "tag": "Study",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Attend software engineering lecture",
+      "dueDate": "2026-10-14",
+      "duration": 90,
+      "tag": "Classes",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "title": "Review JavaScript notes",
+      "dueDate": "2026-10-15",
+      "duration": 60,
+      "tag": "Study",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Meet project teammates",
+      "dueDate": "2026-10-15",
+      "duration": 45,
+      "tag": "Group-Work",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "Submit web development project",
+      "dueDate": "2026-10-16",
+      "duration": 150,
+      "tag": "Assignment",
+      "completed": false
+    },
+    {
+      "id": 6,
+      "title": "Visit the library",
+      "dueDate": "2026-10-16",
+      "duration": 60,
+      "tag": "Personal",
+      "completed": true
+    },
+    {
+      "id": 7,
+      "title": "Prepare presentation slides",
+      "dueDate": "2026-10-17",
+      "duration": 120,
+      "tag": "Project",
+      "completed": false
+    },
+    {
+      "id": 8,
+      "title": "Attend campus club meeting",
+      "dueDate": "2026-10-18",
+      "duration": 60,
+      "tag": "Campus-Life",
+      "completed": false
+    },
+    {
+      "id": 9,
+      "title": "Practice SQL queries",
+      "dueDate": "2026-10-20",
+      "duration": 90,
+      "tag": "Study",
+      "completed": false
+    },
+    {
+      "id": 10,
+      "title": "Plan next week schedule",
+      "dueDate": "2026-10-21",
+      "duration": 30,
+      "tag": "Personal",
+      "completed": false
+    }
+  ]
+}
